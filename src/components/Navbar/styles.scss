@@ -1,0 +1,33 @@
+.navbar {
+  padding: 1.5% 0 0 0 !important;
+}
+
+.navbar-title {
+  margin: 0 0 0 1.5%;
+  color: #303030 !important;
+  font-weight: 500;
+  font-size: 1.5em !important;
+  text-decoration: none !important;
+}
+
+.profile-picture {
+  margin: 0 3% 0 0;
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.nav-link {
+  color: #303030;
+  margin: 0 1em 0 1em !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.nav-logo {
+  margin: 0 0.6em 0 0.6em;
+  width: 2em;
+}

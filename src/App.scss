@@ -1,18 +1,9 @@
-html,
-body,
-#app,
-#app > div {
-  height: 100%;
+body > #root > div {
+  height: 100vh;
+}
+
+body {
+  background-color: #dcdcdc;
 }
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
-
-body {
-  background: rgb(222, 222, 222);
-  background: linear-gradient(
-    180deg,
-    rgba(222, 222, 222, 1) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(222, 222, 222, 1) 100%
-  );
-}
