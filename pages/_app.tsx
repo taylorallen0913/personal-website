@@ -12,7 +12,7 @@ import 'react-toggle/style.css';
 const GlobalStyle = createGlobalStyle<any>`
 body { 
   background-color: ${(props) =>
-    props.theme.mode === 'dark' ? '#202020' : '#F0F0F0'};
+    props.theme.mode === 'dark' ? '#202020' : '#F5F5F5'};
   color: ${(props) => (props.theme.mode === 'dark' ? 'white' : 'black')} 
 } 
 `;
