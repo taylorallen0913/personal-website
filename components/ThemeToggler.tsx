@@ -43,7 +43,7 @@ const ThemeToggler = (): JSX.Element => {
     <>
       {loaded && (
         <Toggle
-          defaultChecked={toggled}
+          checked={toggled}
           onChange={onToggle}
           icons={{
             checked: <Moon />,

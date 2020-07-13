@@ -6,7 +6,8 @@ import '../styles/theme-toggler.scss';
 import '../styles/blog.scss';
 import '../styles/home.scss';
 import '../styles/navbar.scss';
-import '../node_modules/bootstrap/scss/bootstrap.scss';
+import 'bootstrap/scss/bootstrap.scss';
+import 'react-toggle/style.css';
 
 const GlobalStyle = createGlobalStyle<any>`
 body { 
