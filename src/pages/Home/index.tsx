@@ -1,15 +1,23 @@
 import React from 'react';
+import useTheme from '../../hooks/useTheme';
 
 import './styles.scss';
 
 const Home = (): JSX.Element => {
+  const theme = useTheme();
+
   return (
-    <div className="container home-container">
+    <div className="container">
       <h1 className="home-header">
         Taylor Allen, fullstack software engineer and full-time learner
       </h1>
-      <p className="home-header-description">
-        I enjoy building projects with React + Typescript and contributing to
+      <p
+        className={
+          theme === 'dark'
+            ? 'home-header-description-dark'
+            : 'home-header-description'
+        }>
+        I enjoy experimenting with different tech stacks and contributing to
         open source projects.
       </p>
     </div>

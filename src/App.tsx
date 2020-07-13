@@ -1,16 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+import { ThemeContextProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 
-const App = () => {
+const GlobalStyle = createGlobalStyle`
+body { 
+  background-color: ${(props) =>
+    props.theme.mode === 'dark' ? '#202020' : '#F0F0F0'};
+  color: ${(props) => (props.theme.mode === 'dark' ? 'white' : 'black')} 
+} 
+`;
+
+const App = (): JSX.Element => {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-      </Switch>
-    </Router>
+    <ThemeContextProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
+      <GlobalStyle />
+    </ThemeContextProvider>
   );
 };
 
