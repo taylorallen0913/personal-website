@@ -1,7 +1,8 @@
 .navbar {
   padding: 1.5% 0 0 0 !important;
 }
-.profile-picture {
+
+.profilePicture {
   margin: 0 3% 0 0;
   vertical-align: middle;
   width: 65px;
@@ -9,33 +10,33 @@
   border-radius: 50%;
 }
 
-.nav-link-light {
+.navLinkLight {
   text-decoration: none;
   color: #303030;
   margin: 0 1em 0 1em !important;
 }
 
-.nav-link-dark {
+.navLinkDark {
   text-decoration: none;
   color: #ffffff !important;
   margin: 0 1em 0 1em !important;
 }
 
-.navbar-toggler:focus {
+.navbarToggler:focus {
   box-shadow: none !important;
 }
 
-.nav-logo {
+.navLogo {
   margin: 0 0.6em 0 0.6em;
   width: 2em;
 }
 
-.nav-right-side {
+.navRightSide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.theme-toggler {
+.themeToggler {
   margin: 4% 10% 0 0;
 }
