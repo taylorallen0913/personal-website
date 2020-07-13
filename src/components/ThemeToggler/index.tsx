@@ -1,14 +1,27 @@
 import React, { useState, useContext } from 'react';
-import Switch from 'react-switch';
+import Toggle from 'react-toggle';
+import clsx from 'clsx';
 import useTheme from '../../hooks/useTheme';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
-import './styles.scss';
+import styles from './styles.module.scss';
+
+const Moon = () => <span className={clsx(styles.toggle, styles.moon)} />;
+const Sun = () => <span className={clsx(styles.toggle, styles.sun)} />;
+
+const getInitialToggleStatus = () => {
+  const themeFromLocalStorage = JSON.parse(localStorage.getItem('theme')!);
+  return (
+    themeFromLocalStorage !== null && themeFromLocalStorage.mode === 'dark'
+  );
+};
 
 const ThemeToggler = () => {
-  const [toggled, setToggled] = useState(false);
+  const [toggled, setToggled] = useState(getInitialToggleStatus);
   const setTheme = useContext(ThemeContext);
   const theme = useTheme();
+
+  console.log(JSON.parse(localStorage.getItem('theme')!));
 
   const onToggle = () => {
     setToggled(!toggled);
@@ -26,20 +39,13 @@ const ThemeToggler = () => {
   };
 
   return (
-    <Switch
+    <Toggle
+      defaultChecked={getInitialToggleStatus()}
       onChange={onToggle}
-      checked={toggled}
-      onColor="#86d3ff"
-      onHandleColor="#2693e6"
-      handleDiameter={25}
-      uncheckedIcon={false}
-      checkedIcon={false}
-      boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-      activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-      height={20}
-      width={48}
-      className="react-switch"
-      id="material-switch"
+      icons={{
+        checked: <Moon />,
+        unchecked: <Sun />,
+      }}
     />
   );
 };

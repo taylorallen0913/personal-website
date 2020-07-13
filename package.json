@@ -19,17 +19,20 @@
     "@types/styled-theming": "^2.2.4",
     "bootstrap": "5.0.0-alpha1",
     "bootstrap-icons": "^1.0.0-alpha5",
+    "clsx": "^1.1.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-switch": "^5.0.1",
+    "react-toggle": "^4.1.1",
     "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-toggle": "^4.0.2",
     "@types/styled-components": "^5.1.1"
   },
   "eslintConfig": {
