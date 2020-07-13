@@ -1,3 +1,26 @@
-.blog-container {
+.blog-post-container {
   margin: 3% 0 0 0;
+}
+
+.blog-post-header {
+  margin-bottom: 2%;
+}
+
+.blog-post-content {
+  width: 40%;
+  margin: 0 0 0 30%;
+}
+
+.blog-post-title {
+  font-size: 2em;
+  text-align: center;
+}
+
+.blog-post-subtitle {
+  text-align: center;
+}
+
+.blog-post-subtitle-spacing {
+  margin: 0.5em;
+  color: white !important;
 }

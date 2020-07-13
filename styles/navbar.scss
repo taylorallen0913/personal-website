@@ -22,6 +22,10 @@
   margin: 0 1em 0 1em !important;
 }
 
+.nav-link-dark:hover {
+  color: #0d6efd !important;
+}
+
 .navbar-toggler:focus {
   box-shadow: none !important;
 }
@@ -39,4 +43,12 @@
 
 .theme-toggler {
   margin: 4% 10% 0 0;
+}
+
+.nav-dropdown-container {
+  margin-bottom: 5%;
+}
+
+.nav-dropdown {
+  text-align: center;
 }

@@ -21,6 +21,7 @@ export const ThemeContextProvider = ({ children }: Props): JSX.Element => {
 
   const setTheme = (theme: Theme) => {
     setThemeInternal(theme);
+    localStorage.setItem('theme', JSON.stringify(theme));
   };
 
   return (
