@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
-const useTheme = () => {
-  const themeContext = useContext(ThemeContext);
+const useTheme = (): any => {
+  const theme = useContext(ThemeContext);
 
-  return themeContext.mode;
+  return theme.mode;
 };
 
 export default useTheme;
