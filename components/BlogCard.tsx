@@ -5,7 +5,7 @@ const BlogCard = () => {
   const theme = useTheme();
 
   return (
-    <Link href="/">
+    <Link href="/blog/hello-world">
       <div
         className={
           theme === 'dark'

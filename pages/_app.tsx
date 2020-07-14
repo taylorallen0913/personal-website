@@ -1,21 +1,13 @@
 import { AppProps } from 'next/app';
-import { createGlobalStyle } from 'styled-components';
 import { ThemeContextProvider } from '../contexts/ThemeContext';
 
 import '../styles/theme-toggler.scss';
 import '../styles/blog.scss';
 import '../styles/home.scss';
 import '../styles/navbar.scss';
+import '../styles/footer.scss';
 import 'bootstrap/scss/bootstrap.scss';
 import 'react-toggle/style.css';
-
-const GlobalStyle = createGlobalStyle<any>`
-body { 
-  background-color: ${(props) =>
-    props.theme.mode === 'dark' ? '#202020' : '#F8F8F8'};
-  color: ${(props) => (props.theme.mode === 'dark' ? 'white' : 'black')} 
-} 
-`;
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
@@ -31,7 +23,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         crossOrigin="anonymous"
       ></script>
       <Component {...pageProps} />
-      <GlobalStyle />
     </ThemeContextProvider>
   );
 };

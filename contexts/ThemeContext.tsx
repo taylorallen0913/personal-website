@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Theme } from '../interfaces';
+import style from 'styled-theming';
 
 export const ThemeContext = createContext<any>(null);
 
@@ -11,6 +12,25 @@ interface Props {
 export const ThemeContextProvider = ({ children }: Props): JSX.Element => {
   const [theme, setThemeInternal] = useState<any>();
   const [loaded, setLoaded] = useState(false);
+
+  console.log('theme: ', theme);
+
+  const getBackground = style('mode', {
+    light: '#F8F8F8',
+    dark: '#202020',
+  });
+
+  const getForeground = style('mode', {
+    light: 'black',
+    dark: 'white',
+  });
+
+  const GlobalStyle = createGlobalStyle<any>`
+  body { 
+    background-color: ${getBackground};
+    color: ${getForeground};
+  } 
+  `;
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -27,8 +47,11 @@ export const ThemeContextProvider = ({ children }: Props): JSX.Element => {
   return (
     <>
       {loaded && (
-        <ThemeContext.Provider value={setTheme}>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeContext.Provider value={{ setTheme, theme: theme.mode }}>
+          <ThemeProvider theme={theme}>
+            {children}
+            <GlobalStyle />
+          </ThemeProvider>
         </ThemeContext.Provider>
       )}
     </>

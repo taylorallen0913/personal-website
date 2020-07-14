@@ -6,7 +6,7 @@ const Home = (): JSX.Element => {
 
   return (
     <Layout>
-      <div className="container">
+      <div className="container" style={{ marginBottom: '50%' }}>
         <h1 className="header">
           Taylor Allen, fullstack software engineer and full-time learner
         </h1>

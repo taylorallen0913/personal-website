@@ -1,27 +1,27 @@
 import { useState, useContext, useEffect } from 'react';
 import Toggle from 'react-toggle';
-import useTheme from '../hooks/useTheme';
 import { ThemeContext } from '../contexts/ThemeContext';
 
 const Moon = () => <span className="toggle moon" />;
 const Sun = () => <span className="toggle sun" />;
 
-const ThemeToggler = (): JSX.Element => {
-  const [toggled, setToggled] = useState(false);
+interface Props {
+  themeInLocalStorage: {
+    mode: string;
+  };
+}
+
+const ThemeToggler = ({ themeInLocalStorage }: Props): JSX.Element => {
+  const [toggled, setToggled] = useState(
+    themeInLocalStorage && themeInLocalStorage.mode === 'dark',
+  );
   const [loaded, setLoaded] = useState(false);
-  const setTheme = useContext(ThemeContext);
-  const theme = useTheme();
+  const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const themeFromLocalStorage = JSON.parse(localStorage.getItem('theme'));
     setToggled(themeFromLocalStorage && themeFromLocalStorage.mode === 'dark');
     setLoaded(true);
-
-    return () => {
-      if (toggled)
-        localStorage.setItem('theme', JSON.stringify({ mode: 'light' }));
-      else localStorage.setItem('theme', JSON.stringify({ mode: 'dark' }));
-    };
   }, []);
 
   const onToggle = () => {
@@ -30,9 +30,11 @@ const ThemeToggler = (): JSX.Element => {
     switch (theme) {
       case 'dark':
         setTheme({ mode: 'light' });
+        localStorage.setItem('theme', JSON.stringify({ mode: 'light' }));
         break;
       case 'light':
         setTheme({ mode: 'dark' });
+        localStorage.setItem('theme', JSON.stringify({ mode: 'dark' }));
         break;
       default:
         break;
@@ -53,6 +55,23 @@ const ThemeToggler = (): JSX.Element => {
       )}
     </>
   );
+};
+
+interface StaticProps {
+  props: {
+    themeInLocalStorage: {
+      mode: string;
+    };
+  };
+}
+
+export const getStaticProps = (): StaticProps => {
+  const themeInLocalStorage = JSON.parse(localStorage.getItem('theme'));
+  return themeInLocalStorage
+    ? {
+        props: { themeInLocalStorage },
+      }
+    : null;
 };
 
 export default ThemeToggler;
