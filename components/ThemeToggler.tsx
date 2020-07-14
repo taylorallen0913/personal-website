@@ -6,7 +6,7 @@ const Moon = () => <span className="toggle moon" />;
 const Sun = () => <span className="toggle sun" />;
 
 interface Props {
-  themeInLocalStorage: {
+  themeInLocalStorage?: {
     mode: string;
   };
 }

@@ -13,8 +13,6 @@ export const ThemeContextProvider = ({ children }: Props): JSX.Element => {
   const [theme, setThemeInternal] = useState<any>();
   const [loaded, setLoaded] = useState(false);
 
-  console.log('theme: ', theme);
-
   const getBackground = style('mode', {
     light: '#F8F8F8',
     dark: '#202020',

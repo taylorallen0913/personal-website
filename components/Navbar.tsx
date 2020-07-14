@@ -74,33 +74,7 @@ const Navbar = (): JSX.Element => {
               </li>
             </ul>
             <div className="my-2 my-lg-0 nav-right-side">
-              <div className="theme-toggler">
-                <ThemeToggler />
-              </div>
-              <a
-                href="https://www.linkedin.com/in/taylorallen0913/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  src={
-                    theme === 'dark' ? '/linkedin-dark.svg' : '/linkedin.svg'
-                  }
-                  alt="LinkedIn Logo"
-                  className="active nav-logo"
-                />
-              </a>
-              <a
-                href="https://www.github.com/taylorallen0913/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  src={theme === 'dark' ? '/github-dark.svg' : '/github.svg'}
-                  alt="GitHub Logo"
-                  className="active nav-logo"
-                />
-              </a>
+              <ThemeToggler />
             </div>
           </div>
         </div>
@@ -108,10 +82,14 @@ const Navbar = (): JSX.Element => {
       {collapsedMenuOpen && (
         <div className="nav-dropdown-container">
           <div className="nav-dropdown">
-            <p>Home</p>
+            <Link href="/">
+              <p>Home</p>
+            </Link>
           </div>
           <div className="nav-dropdown">
-            <p>Blog</p>
+            <Link href="/blog">
+              <p>Blog</p>
+            </Link>
           </div>
           <div className="nav-dropdown">
             <p>Contact</p>

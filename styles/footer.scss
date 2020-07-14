@@ -1,6 +1,9 @@
-.footer,
-.footer-dark {
-  height: 200px;
+.footer-dark,
+.footer {
+  margin-top: 8em;
+  height: 8em;
+  display: flex;
+  align-items: center;
 }
 
 .footer-dark {
@@ -8,13 +11,24 @@
 }
 
 .footer {
+  background-color: #e8e8e8;
+}
+
+.footer-content {
+  display: flex;
+  margin: 0;
+}
+
+.footer-text-dark {
+  color: #202020;
+  text-decoration: none;
 }
 
 .footer-text {
-  padding: 0 !important;
-  margin: 0 !important;
+  color: white;
+  text-decoration: none;
 }
 
-.footer-copyright {
-  text-align: center;
+.footer-right {
+  margin-left: auto;
 }
