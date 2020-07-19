@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
           <a className={theme === 'dark' ? 'footer-text' : 'footer-text-dark'}>
             Copyright © 2020 Taylor Allen
           </a>
-          <a className="footer-right">
+          <span className="footer-right">
             <a
               href="https://www.linkedin.com/in/taylorallen0913/"
               rel="noopener noreferrer"
@@ -51,7 +51,7 @@ const Footer = (): JSX.Element => {
                 className="active nav-logo"
               />
             </a>
-          </a>
+          </span>
         </span>
       </div>
     </div>
