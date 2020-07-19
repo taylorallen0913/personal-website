@@ -1,27 +1,29 @@
 import BlogCard from '../../components/BlogCard';
 import Layout from '../../components/Layout';
 import fs from 'fs';
+import readingTime from 'reading-time';
 import matter from 'gray-matter';
 import path from 'path';
-
-interface BlogPosts {
-  title: string;
-}
+import { BlogPost } from '../../interfaces';
 
 interface Props {
-  blogPosts: BlogPosts[];
+  blogPosts: BlogPost[];
 }
 
 const Blog = ({ blogPosts }: Props): JSX.Element => {
-  console.log(blogPosts);
   return (
     <Layout>
       <div className="blog-container">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+        {blogPosts.map((post: BlogPost) => (
+          <BlogCard
+            title={post.title}
+            date={post.date}
+            id={post.id}
+            readingTime={post.readingTime}
+            description={post.description}
+            img={post.img}
+          />
+        ))}
       </div>
     </Layout>
   );
@@ -29,19 +31,19 @@ const Blog = ({ blogPosts }: Props): JSX.Element => {
 
 interface StaticProps {
   props: {
-    blogPosts: any;
+    blogPosts: BlogPost[];
   };
 }
 
 export const getStaticProps = async (): Promise<StaticProps> => {
   const files = fs.readdirSync('blog');
 
-  const blogPosts = files.map((fileName) => {
+  const blogPosts = files.map((fileName): any => {
     const filePath = path.join('blog', fileName);
     const fileContents = fs.readFileSync(filePath).toString();
     const metaData = matter(fileContents).data;
 
-    return metaData;
+    return { ...metaData, readingTime: readingTime(fileContents).text };
   });
 
   return {

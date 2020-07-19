@@ -6,3 +6,8 @@ export const parseDate = (rawDate: string): string => {
   dateArr[1] += ',';
   return dateArr.join(' ');
 };
+
+export const toDate = (rawDate: string): Date => {
+  const dateArr = rawDate.split('-');
+  return new Date(dateArr[2] + dateArr[0] + dateArr[1]);
+};

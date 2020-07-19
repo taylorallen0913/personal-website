@@ -1,11 +1,20 @@
 import Link from 'next/link';
 import useTheme from '../hooks/useTheme';
+import { parseDate } from '../utils/parseDate';
+import { BlogPost } from '../interfaces';
 
-const BlogCard = () => {
+const BlogCard = ({
+  title,
+  date,
+  readingTime,
+  description,
+  id,
+  img,
+}: BlogPost): JSX.Element => {
   const theme = useTheme();
 
   return (
-    <Link href="/blog/hello-world">
+    <Link href={`/blog/${id}`}>
       <div
         className={
           theme === 'dark'
@@ -14,21 +23,17 @@ const BlogCard = () => {
         }
       >
         <div className="row">
-          <div className="col-3 blog-img">
-            <img src="/react.png" className="card-img-top" alt="react logo" />
+          <div className="col-4 blog-img">
+            <img src={`/${img}`} className="card-img-top" alt="react logo" />
           </div>
           <div className="col">
             <div className="card-body">
-              <h2 className="card-title">Hello world</h2>
+              <h2 className="card-title">{title}</h2>
               <span className="blog-card-subtext">
-                Jun 13, 2020 · 1 min read
+                {parseDate(date)} · {readingTime}
               </span>
 
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.gin gojiekqeji ofjiefij qesafijej
-                ieaij
-              </p>
+              <p className="card-text">{description}</p>
             </div>
           </div>
         </div>
