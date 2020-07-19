@@ -4,6 +4,7 @@ import fs from 'fs';
 import readingTime from 'reading-time';
 import matter from 'gray-matter';
 import path from 'path';
+import { toDate } from '../../utils/parseDate';
 import { BlogPost } from '../../interfaces';
 
 interface Props {
@@ -46,8 +47,13 @@ export const getStaticProps = async (): Promise<StaticProps> => {
     return { ...metaData, readingTime: readingTime(fileContents).text };
   });
 
+  const sortedBlogPosts = blogPosts.sort(
+    (post1, post2) =>
+      toDate(post2.date).getTime() - toDate(post1.date).getTime(),
+  );
+
   return {
-    props: { blogPosts },
+    props: { blogPosts: sortedBlogPosts },
   };
 };
 
