@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import TerminalHeader from '../components/TerminalHeader';
 import useTheme from '../hooks/useTheme';
 
 const Home = (): JSX.Element => {
@@ -6,18 +7,21 @@ const Home = (): JSX.Element => {
 
   return (
     <Layout>
-      <div className="container" style={{ marginBottom: '50%' }}>
+      <div className="home-container" style={{ marginBottom: '50%' }}>
         <h1 className="header">
-          Taylor Allen, fullstack software engineer and full-time learner
+          Hi, I'm Taylor. I'm a full stack software engineer and full-time
+          learner
         </h1>
         <p
           className={
             theme === 'dark' ? 'header-description-dark' : 'header-description'
           }
         >
-          I enjoy experimenting with different tech stacks and contributing to
-          open source projects.
+          I enjoy building complex, scalable software infastructures and
+          contributing to open source.
         </p>
+
+        <TerminalHeader text="whoami" />
       </div>
     </Layout>
   );

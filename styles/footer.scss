@@ -1,5 +1,6 @@
 .footer-dark,
 .footer {
+  padding: 5% 0 5% 0 !important;
   margin-top: 8em;
   height: 8em;
   display: flex;
@@ -7,6 +8,7 @@
 }
 
 .footer-dark {
+  padding: 5% 0 5% 0 !important;
   background-color: #303846;
 }
 
@@ -31,4 +33,15 @@
 
 .footer-right {
   margin-left: auto;
+}
+
+.footer-name {
+  font-family: 'Karla', sans-serif;
+  margin: 0 !important;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
