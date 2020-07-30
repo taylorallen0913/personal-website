@@ -8,7 +8,7 @@ const Navbar = (): JSX.Element => {
   const [collapsedMenuOpen, setCollapsedMenuOpen] = useState<boolean>(false);
 
   return (
-    <>
+    <div id="navbar">
       <nav className="navbar navbar-expand-lg container">
         <div className="container-fluid">
           <img
@@ -28,8 +28,8 @@ const Navbar = (): JSX.Element => {
             {theme === 'dark' ? (
               <img src="/hamburger-light.svg" alt="hamburger" />
             ) : (
-              <img src="/hamburger.svg" alt="hamburger" />
-            )}
+                <img src="/hamburger.svg" alt="hamburger" />
+              )}
           </span>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto mb-2 mb-lg-0 nav-links">
@@ -96,7 +96,7 @@ const Navbar = (): JSX.Element => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
