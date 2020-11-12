@@ -31,15 +31,12 @@ export const ThemeContextProvider = ({ children }: Props): JSX.Element => {
   `;
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) setThemeInternal(JSON.parse(savedTheme));
-    else setThemeInternal({ mode: 'light' });
+    setThemeInternal({ mode: 'dark' });
     setLoaded(true);
   }, []);
 
   const setTheme = (theme: Theme) => {
     setThemeInternal(theme);
-    localStorage.setItem('theme', JSON.stringify(theme));
   };
 
   return (
