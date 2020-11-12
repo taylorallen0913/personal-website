@@ -74,7 +74,7 @@ const Navbar = (): JSX.Element => {
               </li>
             </ul>
             <div className="my-2 my-lg-0 nav-right-side">
-              <ThemeToggler />
+              <ThemeToggler currentTheme={theme} />
             </div>
           </div>
         </div>

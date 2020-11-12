@@ -6,21 +6,21 @@ const Moon = () => <span className="toggle moon" />;
 const Sun = () => <span className="toggle sun" />;
 
 interface Props {
-  themeInLocalStorage?: {
+  currentTheme?: {
     mode: string;
   };
 }
 
-const ThemeToggler = ({ themeInLocalStorage }: Props): JSX.Element => {
+const ThemeToggler = ({ currentTheme }: Props): JSX.Element => {
+
   const [toggled, setToggled] = useState(
-    themeInLocalStorage && themeInLocalStorage.mode === 'dark',
+    currentTheme && currentTheme.mode === 'dark',
   );
   const [loaded, setLoaded] = useState(false);
   const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    const themeFromLocalStorage = JSON.parse(localStorage.getItem('theme'));
-    setToggled(themeFromLocalStorage && themeFromLocalStorage.mode === 'dark');
+    setToggled(currentTheme && currentTheme.mode === 'dark');
     setLoaded(true);
   }, []);
 
@@ -30,11 +30,9 @@ const ThemeToggler = ({ themeInLocalStorage }: Props): JSX.Element => {
     switch (theme) {
       case 'dark':
         setTheme({ mode: 'light' });
-        localStorage.setItem('theme', JSON.stringify({ mode: 'light' }));
         break;
       case 'light':
         setTheme({ mode: 'dark' });
-        localStorage.setItem('theme', JSON.stringify({ mode: 'dark' }));
         break;
       default:
         break;
@@ -48,8 +46,8 @@ const ThemeToggler = ({ themeInLocalStorage }: Props): JSX.Element => {
           checked={toggled}
           onChange={onToggle}
           icons={{
-            checked: <Moon />,
-            unchecked: <Sun />,
+            checked: <Sun />,
+            unchecked: <Moon />,
           }}
         />
       )}
