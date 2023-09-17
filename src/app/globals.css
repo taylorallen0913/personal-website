@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.preload-first-text,
+.preload-second-text {
+  font-size: 7vw;
+  transform: scaleY(1.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.preload-first-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+.preload-second-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+.preload-second-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  clip-path: inset(0 100% 0 0);
+  z-index: -1;
+  white-space: nowrap;
+  animation: text-fill 2s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes text-fill {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
