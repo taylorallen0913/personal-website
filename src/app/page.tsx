@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className='mt-46'>
+    <main className='mt-48'>
       <h1 className='text-7xl text-center'>Coming Soon... </h1>
     </main>
   );
