@@ -1,0 +1,48 @@
+/* Loading styles */
+
+.loadingText {
+  letter-spacing: 2px;
+  font-size: 3vw;
+  transform: scaleY(1.1);
+  position: relative;
+  color: #8aaecd;
+}
+
+.loadingTextOutlined {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+/* Post-loading styles */
+
+.postloadFirstText,
+.postloadSecondText {
+  font-size: 7vw;
+  transform: scaleY(1.1);
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+.postloadSecondText::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  clip-path: inset(0 100% 0 0);
+  z-index: -1;
+  white-space: nowrap;
+  animation: textFill 2s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes textFill {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}

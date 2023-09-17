@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { useLoading } from '~/contexts/LoadingContext';
+import React, { ReactNode, useEffect } from 'react';
 import Particles from 'react-particles';
 import type { Engine } from 'tsparticles-engine';
 import { loadStarsPreset } from 'tsparticles-preset-stars';
@@ -11,11 +10,8 @@ interface StarParticlesContainerProps {
 const StarParticlesContainer: React.FC<StarParticlesContainerProps> = ({
   children,
 }) => {
-  const { setLoading } = useLoading();
-
   const customInit = async (engine: Engine): Promise<void> => {
     await loadStarsPreset(engine);
-    setLoading(false);
   };
 
   return (
