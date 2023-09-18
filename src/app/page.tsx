@@ -75,6 +75,12 @@ const LandingPage: NextPage = () => {
         });
       }, postLoadTextRef);
 
+      gsap.fromTo(
+        '.continue-button',
+        { bottom: '30px', opacity: 0 },
+        { bottom: '200px', opacity: 1, delay: 1, duration: 0.5 }
+      );
+
       return () => ctx.revert();
     }
   }, [loading]);
@@ -108,31 +114,46 @@ const LandingPage: NextPage = () => {
   return (
     <StarParticlesContainer>
       <main className='pt-48 flex flex-col items-center min-h-screen'>
-        <div>
-          <h1
-            id='postload-first-text'
-            className={clsx(
-              styles.postloadText,
-              styles.postloadFirstText,
-              'font-sans tracking-widest'
-            )}
-          >
-            HELLO! MY NAME IS
-          </h1>
-        </div>
+        <h1
+          id='postload-first-text'
+          className={clsx(
+            styles.postloadText,
+            styles.postloadFirstText,
+            'font-sans tracking-widest'
+          )}
+        >
+          HELLO! MY NAME IS
+        </h1>
 
-        <div>
-          <h1
-            id='postload-second-text'
-            className={clsx(
-              styles.postloadText,
-              styles.postloadSecondText,
-              'font-sans tracking-widest'
-            )}
-            data-text='TAYLOR ALLEN.'
-          >
-            TAYLOR ALLEN.
-          </h1>
+        <h1
+          id='postload-second-text'
+          className={clsx(
+            styles.postloadText,
+            styles.postloadSecondText,
+            'font-sans tracking-widest'
+          )}
+          data-text='TAYLOR ALLEN.'
+        >
+          TAYLOR ALLEN.
+        </h1>
+        <div
+          className={clsx(
+            'absolute left-1/2 -translate-x-1/2 opacity-0 continue-button'
+          )}
+        >
+          <div className='relative inline-block'>
+            <button
+              className={clsx(
+                styles.continueButton,
+                'font-sans px-4 py-6 rounded-lg'
+              )}
+            >
+              Continue
+            </button>
+          </div>
+          {/* <button className='py-3 px-6 border bg-black border-indigo-100 hover:bg-[#D1E2F1] hover:text-black text-[#8aaecd] text-lg rounded-2xl font-sans'>
+            Continue
+          </button> */}
         </div>
       </main>
     </StarParticlesContainer>
