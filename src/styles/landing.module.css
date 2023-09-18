@@ -17,7 +17,7 @@
 
 .postloadFirstText,
 .postloadSecondText {
-  font-size: 7vw;
+  font-size: 7rem;
   transform: scaleY(1.1);
   position: relative;
   overflow: hidden;
@@ -35,7 +35,7 @@
   z-index: -1;
   white-space: nowrap;
   animation: textFill 2s ease-in-out forwards;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 @keyframes textFill {
