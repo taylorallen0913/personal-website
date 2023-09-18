@@ -168,44 +168,8 @@ const LandingPage: NextPage = () => {
     );
   }
 
-  if (finishedIntro) {
+  if (!finishedIntro) {
     return (
-      <main className='w-screen h-screen bg-[#D1E2F1] flex flex-col'>
-        <div className='px-10 mt-8 flex justify-between'>
-          <h1 className='text-black text-xl font-sans'>TAYLOR ALLEN</h1>
-          <h1 className='text-black text-xl font-sans'>MENU</h1>
-        </div>
-        <div className='mt-64 space-y-8 ml-44'>
-          <h1 className='space-x-4' id='landing-text-1'>
-            <span className='font-sans italic text-black text-5xl'>
-              innovation
-            </span>
-            <span className='font-sans text-black text-8xl'>THROUGH CODE;</span>
-          </h1>
-          <h1 className='space-x-4 ml-20' id='landing-text-2'>
-            <span className='font-sans italic text-black text-5xl'>
-              artistry
-            </span>
-            <span className='font-sans text-black text-8xl'>
-              THROUGH DESIGN.
-            </span>
-          </h1>
-        </div>
-
-        <div className='absolute left-1/2 -translate-x-1/2 bottom-10 opacity-1'>
-          <div className='relative inline-block'>
-            <h1 className='font-sans text-black text-3xl'>
-              Discover the Art of Modern Engineering.
-            </h1>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  return (
-    <CustomCursorContextProvider>
-      <CustomCursor />
       <StarParticlesContainer>
         <main className='pt-48 flex flex-col items-center min-h-screen'>
           <h1
@@ -250,7 +214,42 @@ const LandingPage: NextPage = () => {
           </div>
         </main>
       </StarParticlesContainer>
-    </CustomCursorContextProvider>
+    );
+  }
+
+  return (
+    <main className='bg-[#D1E2F1] min-h-screen'>
+      <div className='h-screen'>
+        <div className='px-10 pt-8 flex justify-between'>
+          <h1 className='text-black text-xl font-sans'>TAYLOR ALLEN</h1>
+          <h1 className='text-black text-xl font-sans'>MENU</h1>
+        </div>
+        <div className='mt-44 space-y-8 ml-44'>
+          <h1 className='space-x-4' id='landing-text-1'>
+            <span className='font-sans italic text-black text-5xl'>
+              innovation
+            </span>
+            <span className='font-sans text-black text-8xl'>THROUGH CODE;</span>
+          </h1>
+          <h1 className='space-x-4 xl:ml-20 ml-6' id='landing-text-2'>
+            <span className='font-sans italic text-black text-5xl'>
+              artistry
+            </span>
+            <span className='font-sans text-black text-8xl'>
+              THROUGH DESIGN.
+            </span>
+          </h1>
+        </div>
+        <div className='absolute left-1/2 -translate-x-1/2 bottom-12 opacity-1'>
+          <div className='relative inline-block'>
+            <h1 className='font-sans text-black text-3xl'>
+              Discover the Art of Modern Engineering.
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div className='h-screen'></div>
+    </main>
   );
 };
 

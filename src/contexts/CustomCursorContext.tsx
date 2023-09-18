@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import CustomCursor from '~/components/CustomCursor';
 
 export type CursorLookType =
   | 'slider-hover'
