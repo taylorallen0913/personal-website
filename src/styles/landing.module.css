@@ -34,7 +34,7 @@
   clip-path: inset(0 100% 0 0);
   z-index: -1;
   white-space: nowrap;
-  animation: textFill 2s ease-in-out forwards;
+  animation: textFill 1.5s ease-in-out forwards;
   animation-delay: 1s;
 }
 

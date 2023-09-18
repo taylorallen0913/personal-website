@@ -100,7 +100,6 @@ const LandingPage: NextPage = () => {
         bottom: '-200px',
         left: '0px',
         borderRadius: 0,
-        ease: 'power4.out',
       })
       .then(() => {
         setFinishedIntro(true);
@@ -134,7 +133,38 @@ const LandingPage: NextPage = () => {
   }
 
   if (finishedIntro) {
-    return <main className='w-screen h-screen bg-[#D1E2F1]'></main>;
+    return (
+      <main className='w-screen h-screen bg-[#D1E2F1] flex flex-col'>
+        <div className='px-10 mt-8 flex justify-between'>
+          <h1 className='text-black text-xl font-sans'>TAYLOR ALLEN</h1>
+          <h1 className='text-black text-xl font-sans'>MENU</h1>
+        </div>
+        <div className='mt-64 space-y-8 ml-44'>
+          <h1 className='space-x-4'>
+            <span className='font-sans italic text-black text-5xl'>
+              innovation
+            </span>
+            <span className='font-sans text-black text-8xl'>THROUGH CODE;</span>
+          </h1>
+          <h1 className='space-x-4 ml-20'>
+            <span className='font-sans italic text-black text-5xl'>
+              artistry
+            </span>
+            <span className='font-sans text-black text-8xl'>
+              THROUGH DESIGN.
+            </span>
+          </h1>
+        </div>
+
+        <div className='absolute left-1/2 -translate-x-1/2 bottom-10 opacity-1'>
+          <div className='relative inline-block'>
+            <h1 className='font-sans text-black text-3xl'>
+              Discover the Art of Modern Engineering.
+            </h1>
+          </div>
+        </div>
+      </main>
+    );
   }
 
   return (
