@@ -18,6 +18,7 @@ const LandingPage: NextPage = () => {
 
   const loadingTextRef = useRef<HTMLDivElement>(null);
   const postLoadTextRef = useRef<HTMLDivElement>(null);
+  const landingPageTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,6 +27,41 @@ const LandingPage: NextPage = () => {
   }, []);
 
   useLayoutEffect(() => {
+    if (finishedIntro) {
+      let ctx = gsap.context(() => {
+        const landingFirstText = new SplitType('#landing-text-1', {
+          types: 'lines, words',
+          lineClass: 'line',
+        });
+        const landingSecondText = new SplitType('#landing-text-2', {
+          types: 'lines, words',
+          lineClass: 'line',
+        });
+        const landingFirstWords = landingFirstText.words;
+        const landingSecondWords = landingSecondText.words;
+
+        gsap.from(landingFirstWords, {
+          duration: 0.8,
+          opacity: 0,
+          yPercent: 120,
+          ease: 'power',
+          stagger: 0.05,
+          delay: 1,
+        });
+
+        gsap.from(landingSecondWords, {
+          duration: 0.8,
+          opacity: 0,
+          yPercent: 120,
+          ease: 'power',
+          stagger: 0.05,
+          delay: 1.2,
+        });
+      }, landingPageTextRef);
+
+      return () => ctx.revert();
+    }
+
     // Loading animations
     if (loading) {
       let ctx = gsap.context(() => {
@@ -88,7 +124,7 @@ const LandingPage: NextPage = () => {
 
       return () => ctx.revert();
     }
-  }, [loading]);
+  }, [loading, finishedIntro]);
 
   function expandButton() {
     setStartedIntroAnimation(true);
@@ -140,13 +176,13 @@ const LandingPage: NextPage = () => {
           <h1 className='text-black text-xl font-sans'>MENU</h1>
         </div>
         <div className='mt-64 space-y-8 ml-44'>
-          <h1 className='space-x-4'>
+          <h1 className='space-x-4' id='landing-text-1'>
             <span className='font-sans italic text-black text-5xl'>
               innovation
             </span>
             <span className='font-sans text-black text-8xl'>THROUGH CODE;</span>
           </h1>
-          <h1 className='space-x-4 ml-20'>
+          <h1 className='space-x-4 ml-20' id='landing-text-2'>
             <span className='font-sans italic text-black text-5xl'>
               artistry
             </span>
@@ -169,7 +205,7 @@ const LandingPage: NextPage = () => {
 
   return (
     <CustomCursorContextProvider>
-      {/* <CustomCursor /> */}
+      <CustomCursor />
       <StarParticlesContainer>
         <main className='pt-48 flex flex-col items-center min-h-screen'>
           <h1
