@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import Particles from 'react-particles';
 import type { Engine } from 'tsparticles-engine';
 import { loadStarsPreset } from 'tsparticles-preset-stars';
@@ -17,7 +17,13 @@ const StarParticlesContainer: React.FC<StarParticlesContainerProps> = ({
   return (
     <>
       <Particles
-        options={{ preset: 'stars' }}
+        options={{
+          preset: 'stars',
+          particles: {
+            number: { value: 120 },
+            size: { value: { min: 1, max: 1 } },
+          },
+        }}
         init={customInit}
         className='overflow-y-hidden'
       />
