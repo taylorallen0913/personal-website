@@ -25,7 +25,6 @@ const StarParticlesContainer: React.FC<StarParticlesContainerProps> = ({
           },
         }}
         init={customInit}
-        className='overflow-y-hidden'
       />
       {children}
     </>

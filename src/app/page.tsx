@@ -17,24 +17,26 @@ const LandingPage: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
 
   useLayoutEffect(() => {
     // Loading animations
     if (loading) {
       let ctx = gsap.context(() => {
+        gsap.to(loadingTextRef.current, { opacity: 1, duration: 1.5 });
+
         // Constantly move text to left
         gsap.to(loadingTextRef.current, {
-          x: '-=800',
-          duration: 2,
+          x: '-=1200',
+          duration: 3,
           ease: 'none',
         });
         // Fade text out
         gsap.to(loadingTextRef.current, {
           opacity: 0,
           duration: 1,
-          delay: 1,
+          delay: 2,
         });
       }, loadingTextRef);
 
@@ -81,7 +83,7 @@ const LandingPage: NextPage = () => {
     return (
       <div
         ref={loadingTextRef}
-        className='flex justify-center items-center h-screen whitespace-nowrap pb-32'
+        className='flex justify-center items-center h-screen whitespace-nowrap pb-32 opacity-0'
       >
         {Array.from({ length: 10 }).map((_, i: number) => {
           const textStyles = clsx(
