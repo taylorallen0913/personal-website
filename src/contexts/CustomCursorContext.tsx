@@ -28,7 +28,7 @@ export const CustomCursorContextProvider: React.FC<
 
   return (
     <CustomCursorContext.Provider value={{ type, setType }}>
-      <div style={{ cursor: 'none' }}>{children}</div>
+      {children}
     </CustomCursorContext.Provider>
   );
 };

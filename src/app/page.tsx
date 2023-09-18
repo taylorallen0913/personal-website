@@ -12,6 +12,9 @@ import CustomCursor from '~/components/CustomCursor.jsx';
 
 const LandingPage: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [finishedIntro, setFinishedIntro] = useState<boolean>(false);
+  const [startedIntroAnimation, setStartedIntroAnimation] =
+    useState<boolean>(false);
 
   const loadingTextRef = useRef<HTMLDivElement>(null);
   const postLoadTextRef = useRef<HTMLDivElement>(null);
@@ -87,6 +90,23 @@ const LandingPage: NextPage = () => {
     }
   }, [loading]);
 
+  function expandButton() {
+    setStartedIntroAnimation(true);
+    gsap
+      .to('.continue-button-animation', {
+        duration: 0.4,
+        width: '100vw',
+        height: '100vh',
+        bottom: '-200px',
+        left: '0px',
+        borderRadius: 0,
+        ease: 'power4.out',
+      })
+      .then(() => {
+        setFinishedIntro(true);
+      });
+  }
+
   if (loading) {
     return (
       <div
@@ -113,11 +133,15 @@ const LandingPage: NextPage = () => {
     );
   }
 
+  if (finishedIntro) {
+    return <main className='w-screen h-screen bg-[#D1E2F1]'></main>;
+  }
+
   return (
     <CustomCursorContextProvider>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <StarParticlesContainer>
-        <main className='pt-48 flex flex-col items-center min-h-screen cusor-none'>
+        <main className='pt-48 flex flex-col items-center min-h-screen'>
           <h1
             id='postload-first-text'
             className={clsx(
@@ -140,24 +164,23 @@ const LandingPage: NextPage = () => {
           >
             TAYLOR ALLEN.
           </h1>
+
           <div
             className={clsx(
               'absolute left-1/2 -translate-x-1/2 opacity-0 continue-button'
             )}
           >
             <div className='relative inline-block'>
-              <button
+              <div
                 className={clsx(
                   styles.continueButton,
-                  'font-sans px-4 py-6 rounded-lg'
+                  'font-sans px-4 py-6 rounded-lg continue-button-animation'
                 )}
+                onClick={expandButton}
               >
-                Continue
-              </button>
+                {!startedIntroAnimation && 'Continue'}
+              </div>
             </div>
-            {/* <button className='py-3 px-6 border bg-black border-indigo-100 hover:bg-[#D1E2F1] hover:text-black text-[#8aaecd] text-lg rounded-2xl font-sans'>
-            Continue
-          </button> */}
           </div>
         </main>
       </StarParticlesContainer>
