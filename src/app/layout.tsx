@@ -1,4 +1,5 @@
 import '~/styles/globals.css';
+import '~/styles/cursor.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
